@@ -23,3 +23,17 @@ a{
   width: 80%;
   margin: auto
 }
+
+.active{
+  border-bottom: 2px solid tomato;
+}
+
+.dot{
+  position: absolute;
+  min-width: 10px;
+  min-height: 10px;
+  background-color: tomato;
+  border-radius: 5px;
+  top: -2px;
+  right: -8px;
+}
