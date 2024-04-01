@@ -6,7 +6,7 @@ function FoodItem({ data }) {
     const {_id, name, price, description, image } = data
     const {cartItems, addToCart, removeFromCart} = useContext(StoreContext)
     return (
-        <div className='w-[100%] m-[auto] rounded shadow-food_item animate-fadeIn '>
+        <div className='w-[95%] sm:w-[100%] m-[auto] rounded shadow-food_item animate-fadeIn '>
             <div className='relative'>
                 <img className='w-[100%] rounded-foodCart' src={image} alt="dish image" />
                 {!cartItems[_id] ? <img className='w-[35px] absolute bottom-[20px] right-[15px]' onClick={() => addToCart(_id)} src={assets.add_icon_white} alt="" />

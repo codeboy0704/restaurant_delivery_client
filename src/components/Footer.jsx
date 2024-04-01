@@ -3,9 +3,9 @@ import { assets } from '../assets/assets'
 
 function Footer() {
     return (
-        <div className='text-[#d9d9d9] bg-[#323232] flex flex-col align-center gap-6 py-[10px] px-[8vw] pt-[80px] my-4' id='footer'>
+        <div className='text-[#d9d9d9] bg-[#323232] flex flex-col align-center gap-6 py-[10px] px-[8vw] pt-[80px] mt-6' id='footer'>
             <div className='grid grid-cols-3 gap-2 '>
-                <div className='flex mb-8 col-span-3 sm:col-span-2 flex-col align-start justify-center gap-[20px]'>
+                <div className='flex mb-4 col-span-3 sm:col-span-2 flex-col align-start justify-center gap-[20px]'>
                     <div className='mx-auto sm:mx-[2px]'>
                         <img className='w-48' src={assets.logo} alt="" />
                     </div>
@@ -16,7 +16,7 @@ function Footer() {
                         <img className='cursor-pointer' src={assets.linkedin_icon} alt="" />
                     </div>
                 </div>
-                <div className='flex col-span-3 sm:col-span-1 flex-col justify-center text-center gap-[20px]'>
+                <div className='flex col-span-3 mb-4 sm:col-span-1 flex-col justify-center text-center gap-[20px]'>
                     <h2>GET IN TOUCH</h2>
                     <ul className='flex flex-col gap-3 font-medium'>
                         <li className='cursor-pointer'>+507 60568927</li>
