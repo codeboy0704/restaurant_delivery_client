@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { assets } from '../assets/assets'
-export default function Navbar() {
+export default function Navbar({setShowLogin}) {
     const [menu, setMenu] = useState("home")
   return (
     <div className='py-4 px-0 flex justify-between align-center md:gap-2'>
@@ -19,7 +19,7 @@ export default function Navbar() {
                 <img className='my-auto w-[25px] md:w-[20px]' src={assets.basket_icon} alt="" />
                 <div className='dot'></div>
             </div>
-            <button className='md:w-[80px] bg-transparent rounded rounded-3xl text-md text-[#49557e] border-2 border-red-200 px-3 py-1 hover:bg-[#fff4f2] transition duration-150 ease-out hover:ease-in'>Sign in</button>
+            <button onClick={()=> setShowLogin(sta => !sta)} className='md:w-[80px] bg-transparent rounded rounded-3xl text-md text-[#49557e] border-2 border-red-200 px-3 py-1 hover:bg-[#fff4f2] transition duration-150 ease-out hover:ease-in'>Sign in</button>
         </div>
     </div>
   )
