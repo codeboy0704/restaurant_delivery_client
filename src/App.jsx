@@ -5,17 +5,21 @@ import Home from './pages/Home'
 import Cart from './pages/Cart'
 import PlaceHolder from './pages/PlaceHolder'
 import "./App.css"
+import Footer from './components/Footer'
 
 function App() {
   return (
-    <div className='app'>
-      <Navbar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-         <Route path='/cart' element={<Cart />} />
-         <Route path='/order' element={<PlaceHolder />} />
-      </Routes>
-    </div>
+    <>
+      <div className='app'>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/cart' element={<Cart />} />
+          <Route path='/order' element={<PlaceHolder />} />
+        </Routes>
+      </div>
+      <Footer />
+    </>
   )
 }
 

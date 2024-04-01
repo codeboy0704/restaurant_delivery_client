@@ -17,6 +17,7 @@ export default {
       },
       gridTemplateColumns: {
         "display": 'repeat(auto-fill, minmax(240px, 1fr))',
+        "footer": '2fr 1fr 1fr'
       },
       keyframes: {
         fadeIn: {
