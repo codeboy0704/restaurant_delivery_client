@@ -3,8 +3,8 @@ import { menu_list } from '../assets/assets'
 function ExploreMenu({category, setCategory}) {
   return (
     <div className='flex flex-col gap-3' id='explore-menu'>
-        <h1 className='text-[#262626] font-semibold text-[32px]'>Explore our menu</h1>
-        <p className='max-w-[60%] text-[#808080] text-[15px]'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate laboriosam esse, optio voluptatem nisi, numquam excepturi expedita tempore distinctio vel laborum facere fuga, facilis eveniet. Iusto temporibus voluptatibus est laborum.</p>
+        <h1 className='text-[#262626] font-semibold text-[30px] text-center'>Explore our menu</h1>
+        <p className='hidden text-[#808080] text-[15px]'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate laboriosam esse, optio voluptatem nisi, numquam excepturi expedita tempore distinctio vel laborum facere fuga, facilis eveniet. Iusto temporibus voluptatibus est laborum.</p>
         <div className='flex justify-between align-center gap-[40px] text-center no_scroll my-4'>
             {menu_list.map((el,i)=> {
                 return (

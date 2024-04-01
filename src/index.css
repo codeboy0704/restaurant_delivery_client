@@ -14,15 +14,15 @@ body{
   min-height: 100vh;
 }
 
+.app{
+  padding: 2px 5px;
+}
+
 a{
   text-decoration: none;
   color: inherit;
 }
 
-.app{
-  width: 80%;
-  margin: auto
-}
 
 .active{
   border-bottom: 2px solid tomato;
