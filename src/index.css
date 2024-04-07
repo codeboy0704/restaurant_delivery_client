@@ -10,6 +10,10 @@
   font-family: Outfit;
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 body{
   min-height: 100vh;
 }
@@ -34,6 +38,6 @@ a{
   min-height: 10px;
   background-color: tomato;
   border-radius: 5px;
-  top: -2px;
-  right: -8px;
+  top: -0.1px;
+  right: -5px;
 }

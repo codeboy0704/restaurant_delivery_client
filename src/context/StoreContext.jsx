@@ -1,34 +1,102 @@
-import { createContext, useState } from "react";
-import { food_list } from "../assets/assets";
+import { createContext, useEffect, useState } from "react";
+import axios from "axios";
+import getProducts from "../utils/getProducts";
+import { food_list_images } from "../assets/assets";
 export const StoreContext = createContext(null)
 
 const StoreContextProvider = ({ children }) => {
-
-    const [cartItems, setCartItems] = useState({})
-
-    function addToCart(itemId) {
-        if (!cartItems[itemId]) {
-            setCartItems(prev => ({
-                ...prev, [itemId]: 1
-            }))
-        }else{
-            setCartItems(prev => ({
-                ...prev,[itemId]:prev[itemId] + 1
-            }))
+    const [cartItems, setCartItems] = useState([])
+    const [foodList, setFoodList] = useState([])
+    const [item, setItem] = useState({})
+    const [foundOnCart, setFoundOnCart] = useState({})
+    const matchImagesWithProducts = async () =>{
+        let products = await getProducts()
+        console.log(products)
+        let match = products.map(el => {
+            let img = food_list_images.find(img => img.name.toLocaleLowerCase().trim() == el.name.toLocaleLowerCase().trim())
+            if (img)
+                el = { ...el, image: img.image }
+            return el
+        })
+        setFoodList(match)
+    }
+    async function checkProductsOnCart() {
+        try {
+            const products  = await getProducts()
+            let abstractSpecificData = products.map(el => {
+                const { _id, quantity } = el
+                return { _id, quantity: quantity || 0 }
+            })
+            setCartItems(abstractSpecificData)
+        } catch (e) {
+            console.error(e)
         }
     }
 
-    function removeFromCart(itemId){
-        return setCartItems((prev) => ({
-            ...prev, [itemId]:prev[itemId]-1
-        }))
-    }   
+    useEffect(() => {
+        matchImagesWithProducts()
+    }, [cartItems])
+
+
+    async function updateAddProductQuantity(_id) {
+        try {
+            let findOnCurrentItems = cartItems.find(el => el._id === _id)
+            setItem(findOnCurrentItems)
+            if (findOnCurrentItems) {
+                findOnCurrentItems.quantity = findOnCurrentItems.quantity + 1
+                const req = await axios.put("http://localhost:8000/product/cart", { _id: _id, quantity: findOnCurrentItems.quantity })
+                const res = await req.data.data
+                setItem({_id: res._id, quantity: res.quantity})
+                findOnCurrentItems = item
+            }
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+    async function updateRemoveProductQuantity(_id){
+        try{
+            let findOnCurrentItems = cartItems.find(el => el._id === _id)
+            setItem(findOnCurrentItems)
+            if (findOnCurrentItems) {
+                findOnCurrentItems.quantity = findOnCurrentItems.quantity -1
+                const req = await axios.put("http://localhost:8000/product/cart", { _id: _id, quantity: findOnCurrentItems.quantity })
+                const res = await req.data.data
+                setItem({_id: res._id, quantity: res.quantity})
+                findOnCurrentItems = item
+            }
+        }catch(e){
+            console.error(e)
+        }
+    }
+
+    useEffect(() => {
+        checkProductsOnCart()
+    }, [])
+
+    async function addToCart(id) {
+        try {
+            await updateAddProductQuantity(id)
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+    async function removeFromCart(id) {
+        try{
+            await updateRemoveProductQuantity(id)
+        }catch(e){
+            console.error(e)
+        }
+    }
+
     const contextValue = {
-        food_list,
+        food_list: foodList,
         cartItems,
         setCartItems,
         removeFromCart,
-        addToCart
+        addToCart,
+        setFoundOnCart
     }
 
     return (

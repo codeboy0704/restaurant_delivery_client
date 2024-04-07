@@ -4,9 +4,10 @@ import FoodItem from './FoodItem'
 
 function FoodDisplay({ category }) {
     const { food_list } = useContext(StoreContext)
+    console.log(food_list)
     return (
-        <div className='m-t-[30px]' id='food-display'>
-            <h2 className='font-[3vw, 24px] font-medium my-4'>Top dishes near you</h2>
+        <div className='mt-[40px]' id='food-display'>
+            <h2 className='text-[28px] font-medium my-4'>Top dishes near you</h2>
             <div className="grid grid-cols-display m-t-[30px] gap-[20px]">
                 {food_list.map((food, i) => {
                     if (category === "All" || category === food.category) {
