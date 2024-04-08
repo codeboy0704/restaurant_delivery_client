@@ -20,7 +20,10 @@ function Login({ setShowLogin }) {
                 window.location.reload()
             )
         }else if(check){
-            return register({ name, email, password })
+            let isSignUp = await register({ name, email, password })
+            setShowLogin(prev => !prev)
+            window.location.reload()
+            return isSignUp
         }
     }
     return (
@@ -39,7 +42,7 @@ function Login({ setShowLogin }) {
                 <button onClick={() => {
                     let login = loginOptions()
                     // login ? setTimeout(()=> setShowLogin(sta => !sta), 2000 ) : null
-                }} className='bg-red-400 w-32 text-center mx-auto rounded-md py-1 px-2 text-white font-medium text-[17px]'>{currState == "Sign Up" ? "Create Account" : "Log In"}</button>
+                }} className='bg-red-400 w-40 text-center mx-auto rounded-md py-1 px-2 text-white font-medium text-[17px]'>{currState == "Sign up" ? "Create Account" : "Login"}</button>
                 <div className='flex gap-[2px] text-center align-center justify-center'>
                     <input onChange={() => setCheck(sta => !sta)} className='w-[22px]' type="checkbox" required />
                     <p className='text-[12px] mt-[18px]'>By continuing, I agree to the terms of use & privacy policy</p>

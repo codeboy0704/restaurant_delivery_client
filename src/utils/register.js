@@ -7,6 +7,6 @@ import axios from "axios";
         if(token)
             document.cookie = `token=${token}; max-age=${60 * 60}; path=/; samesite=strict`
     }catch(e){
-
+        
     }
 }

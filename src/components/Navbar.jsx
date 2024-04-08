@@ -17,17 +17,17 @@ export default function Navbar({ setShowLogin }) {
                 <li onClick={() => setMenu("mobile-app")} className={menu == "mobile-app" ? "active my-auto" : "my-auto"}><a href='#app-download'>Mobile-App</a></li>
                 <li onClick={() => setMenu("contact")} className={menu == "contact" ? "active my-auto" : "my-auto"}><a href='#footer'>Contact Us</a></li>
             </ul>
-            <div className='flex align-center justify-center gap-8 md:gap-4'>
-                <div className='flex'>
+            <div className='flex align-center justify-center gap-5 md:gap-4'>
+                {/* <div className='flex'>
                     <img className='my-auto w-[25px] md:w-[20px]' src={assets.search_icon} alt="" />
-                </div>
+                </div> */}
                 <div className='flex relative'>
                     <Link to="/cart" className='h-[32px] flex pt-2'>
-                        <img className='my-auto w-[25px] md:w-[20px]' src={assets.basket_icon} alt="" />
+                        <img className='my-auto w-[25px] md:w-[28px]' src={assets.basket_icon} alt="" />
                     </Link>
                     <div className='dot'></div>
                 </div>
-                {isLogin ? <UserInfo /> :  <button onClick={() => setShowLogin(sta => !sta)} className='md:w-[80px] bg-red-100 rounded rounded-3xl text-md text-[#49557e] border-2 border-red-200 px-3 py-1 hover:bg-[#fff4f2] transition duration-150 ease-out hover:ease-in'>Sign in</button>}
+                {isLogin ? <UserInfo /> :  <button onClick={() => setShowLogin(sta => !sta)} className='md:w-[80px] bg-red-100 rounded rounded-3xl text-md text-[#49557e] border-2 font-semi-bold  border-red-200 px-3 py-2 hover:bg-[#fff4f2] transition duration-150 ease-out hover:ease-in'>Sign in</button>}
             </div>
         </div>
     )
