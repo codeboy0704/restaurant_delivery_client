@@ -6,7 +6,7 @@ async function getProducts() {
     try {
             const res = await axios({
                 method: "GET",
-                url: "http://localhost:8000/product",
+                url: "https://server-1-g6p2.onrender.com/product",
                 headers: {
                     "Content-Type": "application/json",
                     "Cache-control": "no-cache"

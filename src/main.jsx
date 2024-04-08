@@ -6,10 +6,13 @@ import { BrowserRouter } from 'react-router-dom'
 import StoreContextProvider from './context/StoreContext.jsx'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import UserContextProvider from './context/UserContext.jsx'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-    <StoreContextProvider>
-      <App />
-    </StoreContextProvider>
+    <UserContextProvider>
+      <StoreContextProvider>
+        <App />
+      </StoreContextProvider>
+    </UserContextProvider>
   </BrowserRouter>,
 )

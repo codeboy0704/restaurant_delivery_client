@@ -8,6 +8,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: Outfit;
+  border: none;
 }
 
 html{
@@ -29,7 +30,12 @@ a{
 
 
 .active{
-  border-bottom: 2px solid tomato;
+  border-bottom: 4px solid tomato;
+}
+
+.slick-slide .slick-active .slick-clone .slick-current{
+  border: none;
+  outline: none;
 }
 
 .dot{

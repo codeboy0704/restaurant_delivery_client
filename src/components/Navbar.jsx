@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { assets } from '../assets/assets'
 import { Link } from 'react-router-dom'
+import { UserContext } from '../context/UserContext'
+import UserInfo from './UserInfo'
 export default function Navbar({ setShowLogin }) {
     const [menu, setMenu] = useState("home")
+    const {isLogin, setIsLogin} = useContext(UserContext)
     return (
         <div className='py-4 px-0 flex justify-between align-center md:gap-2'>
             <Link to="/">
@@ -12,7 +15,7 @@ export default function Navbar({ setShowLogin }) {
                 <li onClick={() => setMenu("home")} className={menu == "home" ? "active my-auto" : "my-auto"}><a href='/'>Home</a></li>
                 <li onClick={() => setMenu("menu")} className={menu == "menu" ? "active my-auto" : "my-auto"}><a href='#explore-menu'>Menu</a></li>
                 <li onClick={() => setMenu("mobile-app")} className={menu == "mobile-app" ? "active my-auto" : "my-auto"}><a href='#app-download'>Mobile-App</a></li>
-                <li onClick={() => setMenu("contact")} className={menu == "contact" ? "active my-auto" : "my-auto"}>Contact us</li>
+                <li onClick={() => setMenu("contact")} className={menu == "contact" ? "active my-auto" : "my-auto"}><a href='#footer'>Contact Us</a></li>
             </ul>
             <div className='flex align-center justify-center gap-8 md:gap-4'>
                 <div className='flex'>
@@ -24,7 +27,7 @@ export default function Navbar({ setShowLogin }) {
                     </Link>
                     <div className='dot'></div>
                 </div>
-                <button onClick={() => setShowLogin(sta => !sta)} className='md:w-[80px] bg-transparent rounded rounded-3xl text-md text-[#49557e] border-2 border-red-200 px-3 py-1 hover:bg-[#fff4f2] transition duration-150 ease-out hover:ease-in'>Sign in</button>
+                {isLogin ? <UserInfo /> :  <button onClick={() => setShowLogin(sta => !sta)} className='md:w-[80px] bg-red-100 rounded rounded-3xl text-md text-[#49557e] border-2 border-red-200 px-3 py-1 hover:bg-[#fff4f2] transition duration-150 ease-out hover:ease-in'>Sign in</button>}
             </div>
         </div>
     )

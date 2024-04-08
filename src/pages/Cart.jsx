@@ -4,7 +4,7 @@ import { StoreContext } from '../context/StoreContext'
 function Cart() {
     const { cartItems, food_list, removeFromCart } = useContext(StoreContext)
     return (
-        <div className='mt-[100px]'>
+            <div className='mt-[100px]'>
             <div className='flex flex-col justify-center align-center text-center'>
                 <div className='grid grid-cols-cart align-center text-grey-300 text-[max(1vw,12px)]'>
                     <p className='hidden sm:inline'>Items</p>

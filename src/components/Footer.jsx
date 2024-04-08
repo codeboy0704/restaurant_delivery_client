@@ -11,9 +11,16 @@ function Footer() {
                     </div>
                     <p className='hidden'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus ullam incidunt, adipisci obcaecati sint voluptates quam repudiandae provident doloremque. Nesciunt aspernatur, optio non quisquam provident suscipit totam reiciendis quaerat ut!</p>
                     <div className='flex gap-4 justify-center sm:justify-normal'>
-                        <img className='cursor-pointer' src={assets.facebook_icon} alt="" />
-                        <img className='cursor-pointer' src={assets.twitter_icon} alt="" />
-                        <img className='cursor-pointer' src={assets.linkedin_icon} alt="" />
+                        <a href='https://www.facebook.com/' target='_blank'>
+                            <img className='cursor-pointer' src={assets.facebook_icon} alt="facebook" />
+                        </a>
+                        <a href="https://twitter.com/" target='_blank'>
+
+                            <img className='cursor-pointer' src={assets.twitter_icon} alt="twitter" />
+                        </a>
+                        <a href="https://www.linkedin.com/in/ian-flores-31349024a/" target='_blank'>
+                            <img className='cursor-pointer' src={assets.linkedin_icon} alt="lindedin"/>
+                        </a>
                     </div>
                 </div>
                 <div className='flex col-span-3 mb-4 sm:col-span-1 flex-col justify-center text-center gap-[20px]'>

@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { assets } from '../assets/assets'
 import login from '../utils/login'
 import register from '../utils/register'
+import { UserContext } from '../context/UserContext'
 
 function Login({ setShowLogin }) {
     const [currState, setCurrState] = useState("Login")
@@ -9,9 +10,15 @@ function Login({ setShowLogin }) {
     const [check, setCheck] = useState(false)
     const [name, setName] = useState("")
     const [password, setPassword] = useState("")
-    const loginOptions = () => {
+    const [error, setError] = useState("")
+    const loginOptions = async () => {
         if(currState === "Login" && check){
-            return login({ name: name, password: password })
+            let isLogin = await login({ name: name, password: password })
+            return isLogin.message ? setError(isLogin.message) : (
+                isLogin,
+                setShowLogin(prev => !prev),
+                window.location.reload()
+            )
         }else if(check){
             return register({ name, email, password })
         }
@@ -28,9 +35,10 @@ function Login({ setShowLogin }) {
                     {currState === "Login" ? <></> : <input className='border-b-[2px] border-red-300 py-1 px-2 rounded-md focus:outline-none focus:scale-[1.1] transition duration-150 ease-out' type="email" placeholder='Your email' onChange={(e) => setEmail(e.target.value.trim().toLowerCase())} required />}
                     <input className='border-b-[2px] border-red-300 py-1 px-2 rounded-md focus:outline-none focus:scale-[1.1] transition duration-150 ease-out' type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value.trim())} required />
                 </div>
+                <p className='text-red-400'>{error}</p>
                 <button onClick={() => {
                     let login = loginOptions()
-                    login ? setTimeout(()=> setShowLogin(sta => !sta), 2000 ) : null
+                    // login ? setTimeout(()=> setShowLogin(sta => !sta), 2000 ) : null
                 }} className='bg-red-400 w-32 text-center mx-auto rounded-md py-1 px-2 text-white font-medium text-[17px]'>{currState == "Sign Up" ? "Create Account" : "Log In"}</button>
                 <div className='flex gap-[2px] text-center align-center justify-center'>
                     <input onChange={() => setCheck(sta => !sta)} className='w-[22px]' type="checkbox" required />

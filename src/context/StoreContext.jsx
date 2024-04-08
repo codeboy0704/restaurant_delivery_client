@@ -44,7 +44,7 @@ const StoreContextProvider = ({ children }) => {
             setItem(findOnCurrentItems)
             if (findOnCurrentItems) {
                 findOnCurrentItems.quantity = findOnCurrentItems.quantity + 1
-                const req = await axios.put("http://localhost:8000/product/cart", { _id: _id, quantity: findOnCurrentItems.quantity })
+                const req = await axios.put("https://server-1-g6p2.onrender.com/product/cart", { _id: _id, quantity: findOnCurrentItems.quantity })
                 const res = await req.data.data
                 setItem({_id: res._id, quantity: res.quantity})
                 findOnCurrentItems = item
@@ -60,7 +60,7 @@ const StoreContextProvider = ({ children }) => {
             setItem(findOnCurrentItems)
             if (findOnCurrentItems) {
                 findOnCurrentItems.quantity = findOnCurrentItems.quantity -1
-                const req = await axios.put("http://localhost:8000/product/cart", { _id: _id, quantity: findOnCurrentItems.quantity })
+                const req = await axios.put("https://server-1-g6p2.onrender.com/product/cart", { _id: _id, quantity: findOnCurrentItems.quantity })
                 const res = await req.data.data
                 setItem({_id: res._id, quantity: res.quantity})
                 findOnCurrentItems = item

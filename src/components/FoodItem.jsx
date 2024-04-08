@@ -4,6 +4,7 @@ import { StoreContext } from '../context/StoreContext'
 import Loading from './Loading'
 
 function FoodItem({ data }) {
+    let token = document.cookie.replace("toke=", "")
     const { _id, name, price, description, image } = data
     const { cartItems, addToCart, removeFromCart} = useContext(StoreContext)
     const [foundOnCart, setFoundOnCart] = useState({_id: _id, quantity:0})
