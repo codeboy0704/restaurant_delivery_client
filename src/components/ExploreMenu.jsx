@@ -12,10 +12,10 @@ function ExploreMenu({ category, setCategory }) {
                     <Slider {...slideSettings} className='outline-none border-0'>
                         {menu_list.map((el, i) => {
                             return (
-                                <div className='flex flex-col justify-center align-center border-none' onClick={() => setCategory(prev => prev === el.menu_name ? "All" : el.menu_name)} key={i}>
+                                <>
                                     <img className={category === el.menu_name ? "select w-[7.8vw] min-w-[70px] pointer rounded-[50%]" : "w-[7.8vw] min-w-[80px] pointer rounded-xl"} src={el.menu_image} alt="" />
                                     <p className='mt-[5px] mx-5 my-1 text-[#747474] pointer text-[1.4vw, 12px] '>{el.menu_name}</p>
-                                </div>
+                                </>
                             )
                         })}
                     </Slider>
