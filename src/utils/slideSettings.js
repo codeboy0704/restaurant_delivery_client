@@ -26,8 +26,17 @@ const settings = {
           initialSlide: 2,
         },
       },
+      ,
       {
         breakpoint: 640,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 1,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 540,
         settings: {
           slidesToShow: 4,
           slidesToScroll: 2,

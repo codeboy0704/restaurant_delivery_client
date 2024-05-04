@@ -9,7 +9,7 @@ export default function Navbar({ setShowLogin }) {
     return (
         <div className='py-4 px-0 flex justify-between align-center md:gap-2'>
             <Link to="/">
-                <img className='logo my-auto w-[100px] h-[40px] h-10 md:w-[110px]' src={assets.logo} alt="logo" />
+                <img className='logo my-auto w-[100px] h-[45px] h-10 md:w-[120px]' src={assets.logo} alt="logo" />
             </Link>
             <ul className='flex gap-[20px] sm:gap-4 text-[#49557e] text-[17px] hidden md:flex'>
                 <li onClick={() => setMenu("home")} className={menu == "home" ? "active my-auto" : "my-auto"}><a href='/'>Home</a></li>
@@ -27,7 +27,7 @@ export default function Navbar({ setShowLogin }) {
                     </Link>
                     <div className='dot'></div>
                 </div>
-                {isLogin ? <UserInfo /> :  <button onClick={() => setShowLogin(sta => !sta)} className='md:w-[80px] bg-red-100 rounded rounded-3xl text-md text-[#49557e] border-2 font-semi-bold  border-red-200 px-3 py-2 hover:bg-[#fff4f2] transition duration-150 ease-out hover:ease-in'>Sign in</button>}
+                {isLogin ? <UserInfo /> :  <button onClick={() => setShowLogin(sta => !sta)} className='md:w-[80px] bg-[#e5575b] rounded rounded-3xl text-md text-[#fff] border-2 font-semi-bold  border-red-200 px-4 py-[2px] hover:bg-[#c24549] transition duration-150 ease-out hover:scale-105'>Sign in</button>}
             </div>
         </div>
     )
